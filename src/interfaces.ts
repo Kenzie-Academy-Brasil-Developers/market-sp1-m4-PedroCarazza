@@ -3,7 +3,7 @@ export interface IProduct {
   name: string;
   price: number;
   weight: number;
-  calories?: number | null | undefined;
   section: string;
+  calories: number | null | undefined;
   expirationDate: Date;
 }

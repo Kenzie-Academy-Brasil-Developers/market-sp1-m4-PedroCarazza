@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { products } from "./database";
+import { IProduct } from "./interfaces";
 
 let id = 1;
 
@@ -7,7 +8,7 @@ export const createProducts = (req: Request, res: Response) => {
   const date = new Date();
   const oneYear = date.setFullYear(date.getFullYear() + 1);
 
-  const newProduct = {
+  const newProduct: IProduct = {
     id: id++,
     name: req.body.name,
     price: req.body.price,
@@ -42,7 +43,7 @@ export const getProductsById = (req: Request, res: Response) => {
 export const updateProducts = (req: Request, res: Response) => {
     const product = products.find(product => product.id === Number(req.params.id));
 
-    const newProduct = {...product, ...req.body};
+    const newProduct: IProduct = {...product, ...req.body};
 
     const index = products.findIndex(product => product.id === Number(req.params.id))
 
